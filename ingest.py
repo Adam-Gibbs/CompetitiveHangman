@@ -1,12 +1,18 @@
 import json
 
-def LoadNoDupes(path):
+def fileLen(path):
+    with open(path) as f:
+        for i, l in enumerate(f):
+            pass
+    return i + 1
+
+def LoadNoDupes(path, length):
     wordList = []
     count = 0
 
     file = open(path,"r")
 
-    print("( 0 ) + ", end = "")
+    print("( 0% ) + ", end = "")
 
     for word in file:
         count += 1
@@ -19,12 +25,13 @@ def LoadNoDupes(path):
             print(".", end="")
 
         if count % 1000 == 0:
-           print(" +", word, "\n(", count, ") + ", end = "")
+           print(" +", word, "\n(", str(round((count/length)*100, 2)) + "% ) + ", end = "")
 
     print("\n")
     return wordList
 
 def GetInfo(inList):
+    length = len(inList)
     infoList = []
     count = 0
 
@@ -39,7 +46,7 @@ def GetInfo(inList):
             print("-", end="")
 
         if count % 1000 == 0:
-            print(" +", word, "\n(", count, ") + ", end = "")
+            print(" +", word, "\n(", str(round((count/length)*100, 2)) + "% ) + ", end = "")
 
     return infoList
 
@@ -58,6 +65,6 @@ def writeToFile(inData):
 
 def main():
     filePath = "wordListIn.txt"
-    writeToFile(GetInfo(LoadNoDupes(filePath)))
+    writeToFile(GetInfo(LoadNoDupes(filePath, fileLen(filePath))))
 
 main()
