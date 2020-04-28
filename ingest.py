@@ -1,8 +1,12 @@
+import json
+
 def LoadNoDupes(path):
     wordList = []
     count = 0
 
     file = open(path,"r")
+
+    print("( 0 ) + ", end = "")
 
     for word in file:
         count += 1
@@ -23,6 +27,8 @@ def LoadNoDupes(path):
 def GetInfo(inList):
     infoList = []
     count = 0
+
+    print("( 0 ) + ", end = "")
 
     for word in inList:
         count += 1
