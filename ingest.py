@@ -57,7 +57,7 @@ def writeToFile(inData):
         json.dump(inData, f, ensure_ascii=False, indent=4)
 
 def main():
-    filePath = "smallTest.txt"
+    filePath = "wordListIn.txt"
     writeToFile(GetInfo(LoadNoDupes(filePath)))
 
 main()
