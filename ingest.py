@@ -18,7 +18,7 @@ def LoadNoDupes(path, length):
         count += 1
         word = word.upper()
         word = word.strip()
-        if word not in wordList:
+        if word not in wordList and "'" not in word:
             wordList.append(word)
 
         if count % 100 == 0:
