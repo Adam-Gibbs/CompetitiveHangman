@@ -1,7 +1,7 @@
 from wordSelection import listFrequency, removeIfDoesNotContain, removeIfDoesContain
 
 def guess(wordList, guesses):
-    nextGuess = listFrequency(wordList)
+    nextGuess = listFrequency(wordList, guesses)
     guesses.append(nextGuess)
 
     print("I guess", nextGuess)
