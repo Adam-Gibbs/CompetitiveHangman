@@ -19,3 +19,21 @@ def getHighest(frequencyDict):
         if frequencyDict[item] >= count : 
             count, itm = frequencyDict[item], item 
     return(itm) 
+
+def removeIfDoesContain(inList, letter):
+    removeList = []
+
+    for wordInfo in inList:
+        for char in wordInfo[0]:
+            if char == letter:
+                removeList.append(wordInfo)
+                break
+
+    for item in removeList:
+        inList.remove(item)
+
+    return inList
+
+def removeIfDoesNotContain(inList, letter):
+    for wordInfo in inList:
+        pass
