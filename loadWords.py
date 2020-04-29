@@ -17,5 +17,3 @@ def getWordsOfLength(words, length):
             break
 
     return wordList
-
-print(loadFromJSON("finalWords.json", 1))
