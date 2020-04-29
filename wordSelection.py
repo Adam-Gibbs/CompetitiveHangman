@@ -1,10 +1,10 @@
-def listFrequency(wordList):
+def listFrequency(wordList, previous):
     frequencies = {}
 
     for wordInfo in wordList:
         frequencies = wordFrequency(wordInfo[0], frequencies)
 
-    return getHighest(frequencies)
+    return getHighest(frequencies, previous)
 
 def wordFrequency(word, frequencyDict):
     for item in reversed(word): 
@@ -12,10 +12,43 @@ def wordFrequency(word, frequencyDict):
 
     return frequencyDict
 
-def getHighest(frequencyDict):
+def getHighest(frequencyDict, previous):
     count, itm = 0, '' 
 
     for item in frequencyDict:
-        if frequencyDict[item] >= count : 
+        if frequencyDict[item] >= count and item not in previous: 
             count, itm = frequencyDict[item], item 
     return(itm) 
+
+def removeIfDoesContain(inList, letter):
+    removeList = []
+
+    for wordInfo in inList:
+        for char in wordInfo[0]:
+            if char == letter:
+                removeList.append(wordInfo)
+                break
+
+    for item in removeList:
+        inList.remove(item)
+
+    return inList
+
+def removeIfDoesNotContain(inList, letter):
+    removeList = []
+
+    for wordInfo in inList:
+        count = 0
+
+        for char in wordInfo[0]:
+            if char == letter:
+                count += 1
+            
+        if count == 0:
+            removeList.append(wordInfo)
+
+    for item in removeList:
+        inList.remove(item)
+
+    return inList
+
