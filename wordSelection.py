@@ -35,5 +35,20 @@ def removeIfDoesContain(inList, letter):
     return inList
 
 def removeIfDoesNotContain(inList, letter):
+    removeList = []
+
     for wordInfo in inList:
-        pass
+        count = 0
+
+        for char in wordInfo[0]:
+            if char == letter:
+                count += 1
+            
+        if count == 0:
+            removeList.append(wordInfo)
+
+    for item in removeList:
+        inList.remove(item)
+
+    return inList
+

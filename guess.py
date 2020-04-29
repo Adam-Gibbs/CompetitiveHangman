@@ -10,8 +10,9 @@ def guess(wordList, guesses):
     while correct.lower() != "y" and correct.lower() != "n":
         correct = input("\nWas this guess correct? [y/n] ")
 
-    if correct.lower == "y":
+    if correct.lower() == "y":
         wordList = removeIfDoesNotContain(wordList, nextGuess)
+        print(wordList)
 
     else:
         wordList = removeIfDoesContain(wordList, nextGuess)
