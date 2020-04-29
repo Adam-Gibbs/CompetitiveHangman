@@ -48,6 +48,7 @@ def GetInfo(inList):
         if count % 1000 == 0:
             print(" +", word, "\n(", str(round((count/length)*100, 2)) + "% ) + ", end = "")
 
+    print("\n")
     return infoList
 
 def uniqueChars(inWord):
@@ -59,12 +60,16 @@ def uniqueChars(inWord):
 
     return len(charList)
 
+def orderList(unorderedList):
+    sortedList = unorderedList.sort(key=lambda element: element[1])
+    return unorderedList
+
 def writeToFile(inData):
     with open('finalWords.json', 'w', encoding='utf-8') as f:
         json.dump(inData, f, ensure_ascii=False, indent=4)
 
 def main():
     filePath = "wordListIn.txt"
-    writeToFile(GetInfo(LoadNoDupes(filePath, fileLen(filePath))))
+    writeToFile(orderList(GetInfo(LoadNoDupes(filePath, fileLen(filePath)))))
 
 main()
