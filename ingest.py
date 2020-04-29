@@ -65,11 +65,11 @@ def orderList(unorderedList):
     return unorderedList
 
 def writeToFile(inData):
-    with open('sortedWords.json', 'w', encoding='utf-8') as f:
+    with open('finalWords.json', 'w', encoding='utf-8') as f:
         json.dump(inData, f, ensure_ascii=False, indent=4)
 
 def main():
-    filePath = "unsorted.txt"
+    filePath = "wordListIn.txt"
     writeToFile(orderList(GetInfo(LoadNoDupes(filePath, fileLen(filePath)))))
 
 main()
