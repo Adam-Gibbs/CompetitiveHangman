@@ -4,13 +4,15 @@ from guess import guess
 end = False
 guessList = []
 
-lengthToGuess = input("What is the word lenght: ")
-wordList = loadFromJSON("finalWords.json", int(lengthToGuess))
+lengthToGuess = int(input("What is the word length: "))
+wordList = loadFromJSON("finalWords.json", lengthToGuess)
+word = ["_"] * lengthToGuess
 
 while end != True:
-    wordList, guessList, unknownSpaces = guess(wordList, guessList)
+    wordList, guessList, word = guess(wordList, guessList, word)
 
-    if unknownSpaces == 0:
+    if "_" not in word:
         end = True
-
         break
+
+print("The word is,", "".join(word))
