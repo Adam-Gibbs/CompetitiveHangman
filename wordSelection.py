@@ -13,23 +13,43 @@ def wordFrequency(word, frequencyDict):
     return frequencyDict
 
 def getHighest(frequencyDict, previous):
-    count, itm = 0, '' 
+    count = 0
+    itmList = [] 
 
     for item in frequencyDict:
         if frequencyDict[item] >= count and item not in previous: 
-            count, itm = frequencyDict[item], item 
+            itmLst = [item]
+            count = frequencyDict[item]
 
-    if itm == '':
-        itm = getNextUsedLetter(previous)
+        elif frequencyDict[item] == count and item not in previous:
+            itmLst.append(item)
+
+    if len(itmList) == 0:
+        itm = getNextUnusedLetter(previous)
+
+    elif len(itmList) > 1:
+        itm = getMostCommon(itmList)
+
+    elif len(itmList) == 1:
+        itm = itmList[0]
 
     return(itm) 
 
-def getNextUsedLetter(used):
+def getNextUnusedLetter(used):
     common = ["e", "t", "a", "o", "i", "n", "s", "h", "r", "d", "l", "c", "u", "m", "w", "f", "g", "y", "p", "b", "v", "k", "j", "x", "q", "z", ""]
 
     for letter in common:
         if letter not in used:
             return letter
+
+def getMostCommon(posLetters):
+    common = ["e", "t", "a", "o", "i", "n", "s", "h", "r", "d", "l", "c", "u", "m", "w", "f", "g", "y", "p", "b", "v", "k", "j", "x", "q", "z"]
+
+    for letter in common:
+        for posLetter in posLetters:
+            if posLetter == letter:
+                return letter
+
 
 def removeIfDoesContain(inList, letter):
     removeList = []
