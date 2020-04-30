@@ -12,10 +12,11 @@ def guess(wordList, guesses):
 
     if correct.lower() == "y":
         wordList = removeIfDoesNotContain(wordList, nextGuess)
-        print(wordList)
+        unknowns = input("How many spaces left to guess: ")
 
     else:
         wordList = removeIfDoesContain(wordList, nextGuess)
-        print(wordList)
+        unknowns = 1
 
-    return wordList, guesses
+    
+    return wordList, guesses, int(unknowns)

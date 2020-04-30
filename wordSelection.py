@@ -18,7 +18,18 @@ def getHighest(frequencyDict, previous):
     for item in frequencyDict:
         if frequencyDict[item] >= count and item not in previous: 
             count, itm = frequencyDict[item], item 
+
+    if itm == '':
+        itm = getNextUsedLetter(previous)
+
     return(itm) 
+
+def getNextUsedLetter(used):
+    common = ["e", "t", "a", "o", "i", "n", "s", "h", "r", "d", "l", "c", "u", "m", "w", "f", "g", "y", "p", "b", "v", "k", "j", "x", "q", "z", ""]
+
+    for letter in common:
+        if letter not in used:
+            return letter
 
 def removeIfDoesContain(inList, letter):
     removeList = []
