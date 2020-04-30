@@ -11,10 +11,14 @@ def guess(wordList, guesses, word):
         correct = input("\nWas this guess correct? [y/n] ")
 
     if correct.lower() == "y":
-        wordList = removeIfDoesNotContain(wordList, nextGuess)
         spaces = int(input("How many times did it appear? "))
+
+        positions = []
         for lopp in range(spaces):
-            word = changeWord(word, nextGuess)
+            word, position = changeWord(word, nextGuess)
+            positions.append(position)
+
+        wordList = removeIfDoesNotContain(wordList, nextGuess, positions)
 
     else:
         wordList = removeIfDoesContain(wordList, nextGuess)
@@ -24,9 +28,9 @@ def guess(wordList, guesses, word):
 def changeWord(word, letter):
     printPositions(word)
     position = int(input("In what empty position did it appear? "))
-    word = addToWord(position, word, letter)
+    word, position = addToWord(position, word, letter)
 
-    return word
+    return word, position
 
 
 def addToWord(position, word, letter):
@@ -40,9 +44,9 @@ def addToWord(position, word, letter):
             word[position] = letter
 
         else:
-            word = changeWord(word, letter)
+            word, position = changeWord(word, letter)
     
-    return word
+    return word, position
 
 def printPositions(word):
     print("\nThe word is below, with positions shown beneath, ('_' means unkown letter)\n")
