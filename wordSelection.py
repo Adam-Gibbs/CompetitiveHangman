@@ -77,5 +77,19 @@ def removeIfDoesNotContain(inList, letter, positions):
     for item in removeList:
         inList.remove(item)
 
-    return inList
+    return removeForOtherPositions(inList, letter, positions)
+    
 
+    
+def removeForOtherPositions(inList, letter, positions):
+    removeList = []
+
+    for wordInfo in inList:
+        for pos, char in enumerate(wordInfo[0]):
+            if char == letter and pos not in positions:
+                removeList.append(wordInfo)
+
+    for item in removeList:
+        inList.remove(item)
+
+    return inList
