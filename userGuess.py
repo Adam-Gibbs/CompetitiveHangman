@@ -18,7 +18,3 @@ def userGuess(previousGuesses, compWord):
     previousGuesses.append(curGuess)
 
     return previousGuesses, compWord
-
-    
-
-userGuess(["A", "B"], ["_", "_", "A", "_"])
